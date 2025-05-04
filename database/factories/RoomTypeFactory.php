@@ -40,6 +40,15 @@ class RoomTypeFactory extends Factory
             'bed_count' => fake()->numberBetween(1, 2),
             'bed_type' => $bedType,
             'amenities' => $amenities,
+            'breakfast_extra' => fake()->randomFloat(2, 10, 50),
+            'prices_per_person' => function() use ($capacity) {
+                $prices = [];
+                $base = fake()->randomFloat(2, 100, 1000);
+                for ($i = 1; $i <= $capacity; $i++) {
+                    $prices[$i] = $base + ($i - 1) * fake()->randomFloat(2, 50, 150);
+                }
+                return $prices;
+            },
         ];
     }
 }

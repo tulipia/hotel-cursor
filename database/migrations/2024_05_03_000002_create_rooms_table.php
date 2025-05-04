@@ -12,6 +12,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('room_type_id')->constrained()->onDelete('cascade');
             $table->string('room_number')->unique();
+            $table->string('slug')->unique();
             $table->string('floor');
             $table->enum('status', ['available', 'occupied', 'maintenance', 'cleaning'])->default('available');
             $table->text('notes')->nullable();

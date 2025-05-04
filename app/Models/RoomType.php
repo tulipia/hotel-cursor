@@ -14,6 +14,8 @@ class RoomType extends Model
         'name',
         'description',
         'price_per_night',
+        'prices_per_person',
+        'breakfast_extra',
         'capacity',
         'bed_count',
         'bed_type',
@@ -26,6 +28,8 @@ class RoomType extends Model
 
     protected $casts = [
         'price_per_night' => 'decimal:2',
+        'prices_per_person' => 'array',
+        'breakfast_extra' => 'decimal:2',
         'amenities' => 'array',
     ];
 

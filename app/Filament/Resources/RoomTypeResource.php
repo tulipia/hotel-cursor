@@ -37,6 +37,17 @@ class RoomTypeResource extends Resource
                     ->numeric()
                     ->prefix('$')
                     ->maxValue(999999.99),
+                Forms\Components\KeyValue::make('prices_per_person')
+                    ->label('Preços por quantidade de pessoas')
+                    ->keyLabel('Quantidade de pessoas')
+                    ->valueLabel('Preço (R$)')
+                    ->addButtonLabel('Adicionar preço')
+                    ->required(),
+                Forms\Components\TextInput::make('breakfast_extra')
+                    ->label('Valor adicional do café da manhã (R$)')
+                    ->numeric()
+                    ->minValue(0)
+                    ->maxValue(999999.99),
                 Forms\Components\TextInput::make('capacity')
                     ->required()
                     ->numeric()

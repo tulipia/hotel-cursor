@@ -18,14 +18,16 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Criar usuário admin se não existir
-        if (!User::where('email', 'test@example.com')->exists()) {
-            $user = User::factory()->create([
-                'name' => 'admin',
-                'email' => 'test@example.com',
-            ]);
-
-            // Atribuir role de admin
-            $user->roles()->attach(1); // ID 1 é o admin
+        $admin = User::updateOrCreate(
+            [ 'email' => 'richard.fugisse@gmail.com' ],
+            [
+                'name' => 'Administrador',
+                'password' => 'TaChovendoMacaco@123',
+            ]
+        );
+        // Atribuir role de admin (id 1)
+        if (method_exists($admin, 'roles')) {
+            $admin->roles()->syncWithoutDetaching([1]);
         }
 
         $this->call([

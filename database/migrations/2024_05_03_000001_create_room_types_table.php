@@ -13,6 +13,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description');
             $table->decimal('price_per_night', 10, 2);
+            $table->decimal('breakfast_extra', 10, 2)->nullable();
             $table->integer('capacity');
             $table->integer('bed_count');
             $table->string('bed_type');
